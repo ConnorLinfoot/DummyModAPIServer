@@ -1,0 +1,4 @@
+name: DummyModAPIServer
+version: '${project.version}'
+main: dev.linfoot.dummymodapiserver.DummyModAPIServer
+api-version: '1.20'
