@@ -1,17 +1,11 @@
 package dev.linfoot.dummymodapiserver;
 
 import dev.linfoot.dummymodapiserver.handler.PacketHandler;
-import dev.linfoot.dummymodapiserver.handler.impl.LocationHandler;
-import dev.linfoot.dummymodapiserver.handler.impl.PartyInfoHandler;
-import dev.linfoot.dummymodapiserver.handler.impl.PingHandler;
-import dev.linfoot.dummymodapiserver.handler.impl.PlayerInfoHandler;
+import dev.linfoot.dummymodapiserver.handler.impl.*;
 import io.netty.buffer.Unpooled;
 import net.hypixel.modapi.HypixelModAPI;
 import net.hypixel.modapi.packet.HypixelPacket;
-import net.hypixel.modapi.packet.impl.serverbound.ServerboundLocationPacket;
-import net.hypixel.modapi.packet.impl.serverbound.ServerboundPartyInfoPacket;
-import net.hypixel.modapi.packet.impl.serverbound.ServerboundPingPacket;
-import net.hypixel.modapi.packet.impl.serverbound.ServerboundPlayerInfoPacket;
+import net.hypixel.modapi.packet.impl.serverbound.*;
 import net.hypixel.modapi.serializer.PacketSerializer;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.messaging.PluginMessageListener;
@@ -33,6 +27,7 @@ class ServerboundPacketHandler implements PluginMessageListener {
         registerHandler(ServerboundLocationPacket.class, new LocationHandler());
         registerHandler(ServerboundPartyInfoPacket.class, new PartyInfoHandler());
         registerHandler(ServerboundPlayerInfoPacket.class, new PlayerInfoHandler());
+        registerHandler(ServerboundRegisterPacket.class, new RegisterHandler());
     }
 
     private <T extends HypixelPacket> void registerHandler(Class<T> packetClass, PacketHandler<T> handler) {
