@@ -1,6 +1,7 @@
 package dev.linfoot.dummymodapiserver;
 
-import net.hypixel.modapi.packet.impl.clientbound.event.ClientboundHelloEventPacket;
+import net.hypixel.data.region.Environment;
+import net.hypixel.modapi.packet.impl.clientbound.ClientboundHelloPacket;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
@@ -20,12 +21,12 @@ class PlayerListener implements Listener {
     @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
     public void onRegisterChannel(PlayerRegisterChannelEvent event) {
         // We have to send hello once the client registers it, sending it before will result in Bukkit blocking the packet
-        if (!event.getChannel().equals("hyevent:hello")) {
+        if (!event.getChannel().equals("hypixel:hello")) {
             return;
         }
 
         event.getPlayer().sendMessage("Sending hello packet!");
-        server.sendPacket(event.getPlayer(), new ClientboundHelloEventPacket());
+        server.sendPacket(event.getPlayer(), new ClientboundHelloPacket(Environment.TEST));
     }
 
     @EventHandler
