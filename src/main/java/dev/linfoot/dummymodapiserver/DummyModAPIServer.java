@@ -6,7 +6,7 @@ import net.hypixel.data.type.GameType;
 import net.hypixel.modapi.HypixelModAPI;
 import net.hypixel.modapi.error.ErrorReason;
 import net.hypixel.modapi.packet.ClientboundHypixelPacket;
-import net.hypixel.modapi.packet.impl.clientbound.event.ClientboundLocationEventPacket;
+import net.hypixel.modapi.packet.impl.clientbound.event.ClientboundLocationPacket;
 import net.hypixel.modapi.serializer.PacketSerializer;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -42,7 +42,7 @@ public final class DummyModAPIServer extends JavaPlugin {
                         continue;
                     }
 
-                    sendPacket(player, new ClientboundLocationEventPacket(
+                    sendPacket(player, new ClientboundLocationPacket(
                             "local-server",
                             GameType.HOUSING,
                             null,

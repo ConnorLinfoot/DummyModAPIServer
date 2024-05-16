@@ -24,7 +24,6 @@ class ServerboundPacketHandler implements PluginMessageListener {
         this.server = server;
 
         registerHandler(ServerboundPingPacket.class, new PingHandler());
-        registerHandler(ServerboundLocationPacket.class, new LocationHandler());
         registerHandler(ServerboundPartyInfoPacket.class, new PartyInfoHandler());
         registerHandler(ServerboundPlayerInfoPacket.class, new PlayerInfoHandler());
         registerHandler(ServerboundRegisterPacket.class, new RegisterHandler());

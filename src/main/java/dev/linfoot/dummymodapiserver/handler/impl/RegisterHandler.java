@@ -8,7 +8,7 @@ import org.bukkit.entity.Player;
 public class RegisterHandler implements PacketHandler<ServerboundRegisterPacket> {
     @Override
     public void handlePacket(DummyModAPIServer server, Player player, ServerboundRegisterPacket packet) {
-        server.getLogger().info("Received register packet from " + player.getName() + " for packets " + packet.getWanted());
-        server.setSubscribedEvents(player, packet.getWanted());
+        server.getLogger().info("Received register packet from " + player.getName() + " for packets " + packet.getSubscribedEvents());
+        server.setSubscribedEvents(player, packet.getSubscribedEvents());
     }
 }
